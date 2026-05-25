@@ -75,14 +75,9 @@ DeviceFileEvents
 ---
 
 ## Created By:
-- **Author Name**: Josh Madakor
-- **Author Contact**: https://www.linkedin.com/in/joshmadakor/
+- **Author Name**: Benjamin Mangus
+- **Author Contact**: https://www.linkedin.com/in/ben-mangus/
 - **Date**: August 31, 2024
-
-## Validated By:
-- **Reviewer Name**: 
-- **Reviewer Contact**: 
-- **Validation Date**: 
 
 ---
 
