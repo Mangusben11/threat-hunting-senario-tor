@@ -98,47 +98,92 @@ DeviceNetworkEvents
 
 ---
 
-## Chronological Event Timeline 
 
-2026-05-23 14:24:27 (Local) / 21:24:27 (UTC): * Action: FileCreated
-Initiating User: dice1r
-Event: User dice1r downloaded the Tor Browser portable installer (tor-browser-windows-x86_64-portable-15.0.14.exe) and saved it to their C:\Users\Dice1r\Downloads\ directory.
+## Chronological Event Timeline
 
-2026-05-23 14:27:27 (Local) / 21:27:27 (UTC): * Action: ProcessCreated
-Initiating User: dice1r
-Event: User dice1r executed the Tor Browser installer via the command line utilizing the /S flag ("tor-browser-windows-x86_64-portable-15.0.14.exe" /S), confirming their intent to install the software silently without triggering GUI installation prompts.
+### 14:24:27 — Tor Installer Downloaded
 
-2026-05-23 14:27:39 – 14:27:44 (Local): * Action: FileCreated (Multiple)
-Initiating User: dice1r
-Event: Following the command line execution by user dice1r, the silent installation process extracted the Tor Browser files directly to the user's Desktop (C:\Users\Dice1r\Desktop\Tor Browser\). Key files created included tor.exe, Tor-Launcher.txt, Torbutton.txt, and the desktop shortcut Tor Browser.lnk.
+Action:  FileCreated
 
-2026-05-23 14:27:54 – 14:28:06 (Local) / 21:27:54 (UTC): * Action: ProcessCreated & FileCreated
-Initiating User: dice1r
-Event: User dice1r launched the Tor Browser. This action spawned the primary firefox.exe process, followed by multiple child processes for isolated browser tabs, GPU usage, and content rendering. Simultaneously, a storage.sqlite database was generated in the default profile folder, indicating the browser's initial setup by the user.
+  
 
-2026-05-23 14:28:11 – 14:29:28 (Local) / 21:29:28 (UTC): * Action: ConnectionSuccess
-Initiating User: dice1r
-Event: The Tor proxy processes initiated by user dice1r successfully established external network connections. Initially, local loopback connections (127.0.0.1:9151) occurred to route traffic through the proxy. Shortly after, the user's tor.exe process successfully established connections to known remote Tor relay nodes (e.g., 194.34.132.51 on port 9001) and other sites over port 443.
+User dice1r downloaded **tor-browser-windows-x86_64-portable-15.0.14.exe** to C:\Users\Dice1r\Downloads\
 
-2026-05-23 14:30:23 – 14:40:13 (Local): * Action: ProcessCreated & FileCreated
-Initiating User: dice1r
-Event: Sustained browser usage by user dice1r occurred. Several new firefox.exe background processes were spawned, indicative of the user opening multiple new tabs while browsing. At 14:39:27, formhistory.sqlite was created, indicating user dice1r was actively inputting data into web forms during this session.
+### 14:27:27 — Silent Installation Executed
 
-2026-05-23 14:48:08 (Local) / 21:48:08 (UTC): * Action: FileCreated
-Initiating User: dice1r
-Event: The Tor browsing session concluded with user dice1r creating a local text file named tor-shopping-list.txt on their Desktop, resulting in the corresponding Windows Recent item shortcuts (.lnk files) being generated in the user's AppData\Roaming directory.
+Action:  ProcessCreated
 
+  
 
+dice1r ran the installer with the /S flag, suppressing all GUI prompts and installing silently.
+
+  
+
+Command:  **"tor-browser-windows-x86_64-portable-15.0.14.exe" /S**
+
+### 14:27:39–14:27:44 — Installation Files Extracted
+
+Action:  FileCreated (Multiple)
+
+  
+
+Tor Browser files extracted to C:\Users\Dice1r\Desktop\Tor Browser\
+
+  
+
+Key files: **tor.exe, Tor-Launcher.txt, Torbutton.txt, Tor Browser.lnk**
+
+### 14:27:54–14:28:06 — Tor Browser Launched
+
+Action:  ProcessCreated / FileCreated
+
+  
+
+**firefox.exe** spawned along with child processes for tab isolation and GPU rendering. storage.sqlite created in the browser profile, confirming first-time initialization.
+
+### 14:28:11–14:29:28 — Tor Network Connections Established
+
+Action:  ConnectionSuccess
+
+  
+
+Local loopback on 127.0.0.1:9151 confirmed proxy routing. 
+
+**tor.exe** connected to external relay 194.34.132.51:9001 and additional hosts over port 443.
+
+### 14:30:23–14:40:13 — Active Browsing Session
+
+Action:  ProcessCreated / FileCreated
+
+  
+
+Multiple **firefox.exe** processes spawned consistent with multi-tab browsing. formhistory.sqlite created at 14:39:27, indicating active web form submissions.
+
+### 14:48:08 — Suspicious File Created Post-Session
+
+Action:  FileCreated
+
+  
+
+dice1r created tor-shopping-list.txt on their Desktop. Corresponding .lnk shortcut generated in AppData\Roaming\Microsoft\Windows\Recent\
+
+  
+
+The filename **tor-shopping-list.txt** strongly suggests goal-directed Tor usage and warrants escalation.
+
+  
 ---
 
 ## Summary
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+User dice1r silently installed the Tor Browser on the threat-hunt-lab device using the /S command-line flag to avoid detection, launched the browser, and established confirmed connections to external Tor relay nodes. During the session, the user actively submitted data through web forms. Upon concluding the session, a file named tor-shopping-list.txt was created on the Desktop — suggesting deliberate, goal-directed use of the Tor network rather than casual curiosity.
+
 
 ---
 
 ## Response Taken
 
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
+Tor Browser usage was confirmed on device dice1r-threat-h by user dice1r. The device was isolated from the network and the user's direct manager was notified.
+
 
 ---
